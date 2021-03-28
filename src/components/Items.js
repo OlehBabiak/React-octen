@@ -4,7 +4,7 @@ export default function Items({props}) {
     return (
         <div>
             <li>
-                {props.id} - {props.description}
+                {props.id} - {props.content}
             </li>
         </div>
     )
