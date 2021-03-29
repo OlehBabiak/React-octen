@@ -52,6 +52,7 @@ const changeOnTodos = () => {
         <div>
                   <button onClick={changeOnUsers}>Users</button>
                   <button onClick={changeOnTodos}>Todos</button>
+                  
                   {component.map(value => <Userslist props={value}/>)}  
                   {component.map(value => <Todolist props={value}/>)}  
           </div>
