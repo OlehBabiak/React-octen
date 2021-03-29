@@ -17,12 +17,12 @@ const [...url] = [
 function App() {
 
 
-const [state, setstate] = useState()
+const [component, setcomponent] = useState([])
 
   const fetchLinks = async () => {
     const response = await fetch(url[0])
     const data = await response.json()
-    return data
+    setcomponent(data)
     console.log(data);
   }
 
@@ -33,7 +33,7 @@ fetchLinks()
   return (
     <div className='App'>
           <div>
-                  {data.map(value => <Userlist/>)}    
+                  {component.map(value => <Userlist id={value.id} name={value.name} username={value.username}/>)}    
           </div>
     </div>
     
