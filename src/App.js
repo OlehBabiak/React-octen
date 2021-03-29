@@ -184,9 +184,9 @@ import Items from './components/Items'
 //   )
 
 
-}
+// }
 
-export default App
+// export default App
 
 // 4 написати тогл компоненту, яка буде ховати або показувати елемент приклад з візуалкою тут 
 //https: //material-ui.com/components/switches/#customized-switches
@@ -196,21 +196,20 @@ function App() {
 
 const [IsComponentVisiable, setIsComponentVisiable] = useState(true)
 
+
+const toggleItem= () => {
+  setIsComponentVisiable(!IsComponentVisiable)
+}
+
   return (
     <div className='App'>
-        <div>
-         <ul>
-            {filteredArr.map(todo => <li key={todo.id}>
-              {todo.content}
-              <button onClick={() => (deleteItem(todo))}>Delete</button>
-            </li>)}
-         </ul>
-         </div>
           <div>
-          
-            <button onClick={revert}>Revert</button>
+            <div>{IsComponentVisiable && <Items/>}</div>
+            <button onClick={toggleItem}>Toggle</button>
           
           </div>
     </div>
     
   )}
+
+  export default App
