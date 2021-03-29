@@ -31,20 +31,18 @@ const [lastPartOfUrl, setLastPartOfUrl] = useState('users')
 
 useEffect(()=>{
 fetchLinks()
-return () => {
-  setcomponent(null)
-}
 }, [lastPartOfUrl])
 
 
 
 const changeOnUsers = () => {
-
+setLastPartOfUrl('users')
+console.log(component);
 }
 
 const changeOnTodos = () => {
-  setLastPartOfUrl(lastPartOfUrl = 'todos')
-  
+  setLastPartOfUrl('todos')
+  console.log(component);
 }
 
   return (
