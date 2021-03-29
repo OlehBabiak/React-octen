@@ -131,85 +131,85 @@ import Items from './components/Items'
 //було не просто так)
 
 
-// function App() {
+function App() {
 
-// const [todoes, setitems] = useState([
-//   {id:1, content:'Item1'},
-//   {id:2, content:'Item2'},
-//   {id:3, content:'Item3'},
-//   {id:4, content:'Item4'},
-//   {id:5, content:'Item5'},
-//   {id:6, content:'Item6'},
-//   {id:7, content:'Item7'},
-//   {id:8, content:'Item8'},
-//   {id:9, content:'Item9'},
-// ])
-// const [checkItemArr, setcheckItemArr] = useState([])
+const [todoes, setitems] = useState([
+  {id:1, content:'Item1'},
+  {id:2, content:'Item2'},
+  {id:3, content:'Item3'},
+  {id:4, content:'Item4'},
+  {id:5, content:'Item5'},
+  {id:6, content:'Item6'},
+  {id:7, content:'Item7'},
+  {id:8, content:'Item8'},
+  {id:9, content:'Item9'},
+])
+const [checkItemArr, setcheckItemArr] = useState([])
 
-// const filteredArr = todoes.filter(el => !checkItemArr.includes(el.id)) 
+const filteredArr = todoes.filter(el => !checkItemArr.includes(el.id)) 
 
-// const deleteItem = (itemeToDelete) => {
-//   if (!itemeToDelete) return
-//   const clone = [...checkItemArr]  
-//   clone.push(itemeToDelete.id)  
-//   setcheckItemArr(clone) 
-//   // // setcheckItemArr([...checkItemArr, ItemeToDelete.id])
+const deleteItem = (itemeToDelete) => {
+  if (!itemeToDelete) return
+  const clone = [...checkItemArr]  
+  clone.push(itemeToDelete.id)  
+  setcheckItemArr(clone) 
+  // // setcheckItemArr([...checkItemArr, ItemeToDelete.id])
  
-// }
+}
 
 
-// const revert = () => {
-// setcheckItemArr([])
-// } 
+const revert = () => {
+setcheckItemArr([])
+} 
 
 
 
-//   return (
-//     <div className='App'>
-//         <div>
-//          <ul>
-//             {filteredArr.map(todo => <li key={todo.id}>
-//               {todo.content}
-//               <button onClick={() => (deleteItem(todo))}>Delete</button>
-//             </li>)}
-//          </ul>
-//          </div>
-//           <div>
+  return (
+    <div className='App'>
+        <div>
+         <ul>
+            {filteredArr.map(todo => <li key={todo.id}>
+              {todo.content}
+              <button onClick={() => (deleteItem(todo))}>Delete</button>
+            </li>)}
+         </ul>
+         </div>
+          <div>
           
-//             <button onClick={revert}>Revert</button>
+            <button onClick={revert}>Revert</button>
           
-//           </div>
-//     </div>
+          </div>
+    </div>
     
-//   )
+  )
 
 
-// }
+}
 
-// export default App
+export default App
 
 // 4 написати тогл компоненту, яка буде ховати або показувати елемент приклад з візуалкою тут 
 //https: //material-ui.com/components/switches/#customized-switches
 
 
-function App() {
+// function App() {
 
-const [IsComponentVisiable, setIsComponentVisiable] = useState(true)
+// const [IsComponentVisiable, setIsComponentVisiable] = useState(true)
 
 
-const toggleItem= () => {
-  setIsComponentVisiable(!IsComponentVisiable)
-}
+// const toggleItem= () => {
+//   setIsComponentVisiable(!IsComponentVisiable)
+// }
 
-  return (
-    <div className='App'>
-          <div>
-            <div>{IsComponentVisiable && <Items/>}</div>
-            <button onClick={toggleItem}>Toggle</button>
+//   return (
+//     <div className='App'>
+//           <div>
+//             <div>{IsComponentVisiable && <Items/>}</div>
+//             <button onClick={toggleItem}>Toggle</button>
           
-          </div>
-    </div>
+//           </div>
+//     </div>
     
-  )}
+//   )}
 
-  export default App
+//   export default App
