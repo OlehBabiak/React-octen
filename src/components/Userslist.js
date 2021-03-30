@@ -1,17 +1,17 @@
-import React, {useState, Component} from 'react'
+import React from 'react'
 
 
-export default function Users({props}) {
+export default function Users({user:{id,name,phone}}) {
     return (
         <div>
-           {'Id: '} {props.id}
+           {`Id: ${id}`}
            <br/>
-           {'Name: '} {props.name}
+           {`Name: ${name}`}
            <br/>
-           {'Surname: '} {props.phone}
+           {`Surname: ${phone}`}
            <br/>
            <br/>
-           
+
         </div>
     )
 }

@@ -1,13 +1,11 @@
-import React, {useState, useEffect, Component} from 'react'
+import React,{useState,useEffect,useCallback} from 'react'
 import Userslist from './components/Userslist'
 import Todolist from './components/Todoslist'
 
-
 const usersLink = 'https://jsonplaceholder.typicode.com/'
 
-
 // const [...url] = [
-// 'https://jsonplaceholder.typicode.com/users', 
+// 'https://jsonplaceholder.typicode.com/users',
 // 'https://jsonplaceholder.typicode.com/todos',
 // 'https://jsonplaceholder.typicode.com/photos',
 // 'https://jsonplaceholder.typicode.com/albums',
@@ -17,51 +15,45 @@ const usersLink = 'https://jsonplaceholder.typicode.com/'
 
 function App() {
 
+    const [component, setComponent] = useState([])
+    const [flag, setFlag] = useState(false)
+    const [lastPartOfUrl, setLastPartOfUrl] = useState('users')
 
-const [component, setcomponent] = useState([])
+    const fetchLinks = useCallback( () => {
+        fetch(`${usersLink}${lastPartOfUrl}`)
+            .then(res => res.json())
+            .then(data => setComponent(data))
+    },[lastPartOfUrl])
 
-const [lastPartOfUrl, setLastPartOfUrl] = useState('users')
+    useEffect(() => {
+        fetchLinks()
+    }, [lastPartOfUrl,fetchLinks])
 
-  const fetchLinks = async () => {
-    const response = await fetch(`${usersLink}${lastPartOfUrl}`)
-    const data = await response.json()
-    setcomponent(data)
-    console.log(data);
-  }
+    const changeOn = () => {
+        setFlag(prevState => !prevState)
+        const apiUrl = flag ? 'users' : 'todos'
+        setLastPartOfUrl(apiUrl)
+    }
+    // ну вариков много как сделать покажу только один
 
-useEffect(()=>{
-fetchLinks()
-}, [lastPartOfUrl])
+    return (
+        <div className='App'>
 
-
-
-const changeOnUsers = () => {
-setLastPartOfUrl('users')
-console.log(component);
+            {!!component.length && (
+                <div>
+                    <button onClick={changeOn}>Users</button>
+                    <button onClick={changeOn}>Todos</button>
+                    {
+                        component.map(value => {
+                            return flag
+                                ? <Todolist key={value.id} todo={value}/>
+                                : <Userslist key={value.id} user={value}/>
+                        })}
+                </div>
+            )}
+        </div>
+    )
 }
 
-const changeOnTodos = () => {
-  setLastPartOfUrl('todos')
-  console.log(component);
-}
+export default App
 
-  return (
-    <div className='App'>
-
-      {!!component.length && (
-        <div>
-                  <button onClick={changeOnUsers}>Users</button>
-                  <button onClick={changeOnTodos}>Todos</button>
-                  
-                  {component.map(value => <Userslist props={value}/>)}  
-                  {component.map(value => <Todolist props={value}/>)}  
-          </div>
-      )}
-          
-    </div>
-    
-  )}
-
-  export default App
-
- 
