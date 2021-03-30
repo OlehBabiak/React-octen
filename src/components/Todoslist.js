@@ -1,13 +1,13 @@
-import React, {useState, Component} from 'react'
+import React from 'react'
 
 
-export default function Todolist({props}) {
+export default function Todolist({todo:{id,title}}) {
     return (
         <div>
             <div>
-                {'Id: '}{props.id}
+                {`Id: ${id}`}
                 <br/>
-                {'title: '}{props.title}
+                {`title: ${title}`}
                 <br/>
                 <br/>
             </div>
