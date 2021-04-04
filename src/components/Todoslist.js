@@ -1,16 +1,22 @@
 import React from 'react'
 
 
-export default function Todolist({todo:{id,title}}) {
+export default function Users({todos}) {
     return (
-        <div>
+        <>
+        {todos.map(todo =>(
             <div>
-                {`Id: ${id}`}
-                <br/>
-                {`title: ${title}`}
-                <br/>
-                <br/>
+           {'ID: '} {todo.id}
+           <br/>
+           {'Title: '} {todo.title}
+            <br/>
+           {'completed: '}{todo.completed.toString()}
+           <br/>
+           <br/>
+            
             </div>
-        </div>
+        ))}
+           
+        </>
     )
 }

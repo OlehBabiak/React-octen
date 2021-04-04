@@ -1,10 +1,20 @@
-import React, {useState, Component} from 'react'
+import React from 'react'
 
 
-export default function Users() {
+export default function Photos({photos}) {
     return (
-        <div>
+        <>
+        {photos.map(photo =>(
+            <div>
+           {'Title: '} {photo.title}
+           <br/>
+           {'Url: '} {photo.url}
+           <br/>
+           <br/>
+            
+            </div>
+        ))}
            
-        </div>
+        </>
     )
 }

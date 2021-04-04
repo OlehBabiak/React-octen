@@ -1,10 +1,20 @@
-import React, {useState, Component} from 'react'
+import React from 'react'
 
 
-export default function Users() {
+export default function Comments({comments}) {
     return (
-        <div>
+        <>
+        {comments.map(comment =>(
+            <div>
+           {'Name: '} {comment.name}
+           <br/>
+           {'Body: '} {comment.body}
+           <br/>
+           <br/>
+            
+            </div>
+        ))}
            
-        </div>
+        </>
     )
 }

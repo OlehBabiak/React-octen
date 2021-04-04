@@ -1,17 +1,20 @@
 import React from 'react'
 
 
-export default function Users({user:{id,name,phone}}) {
+export default function Users({users}) {
     return (
-        <div>
-           {`Id: ${id}`}
+        <>
+        {users.map(user =>(
+            <div>
+           {'Name: '} {user.name}
            <br/>
-           {`Name: ${name}`}
-           <br/>
-           {`Surname: ${phone}`}
+           {'email: '} {user.email}
            <br/>
            <br/>
-
-        </div>
+            
+            </div>
+        ))}
+           
+        </>
     )
 }
